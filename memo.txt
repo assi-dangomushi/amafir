@@ -1,0 +1,42 @@
+overlap-save法を使用
+http://www.ari-web.com/service/soft/reverb-4.htm
+
+
+
+overlap-add法
+https://ja.wikipedia.org/wiki/%E9%87%8D%E7%95%B3%E5%8A%A0%E7%AE%97%E6%B3%95
+
+
+
+初期化
+係数ファイルを読み込む
+ファイルがなければエラーではなくその係数はゼロにする。
+長さがNより大きければ切り捨て。
+Nより短ければ後ろはゼロ。
+
+
+
+長さNの係数の前にゼロをN個つけて2Nにする
+fftして2Nの複素数配列にする(COEFバッファ)
+このときに2N倍にしておく（FFTW3がノーマライズしてくれないので）
+
+メインループ
+
+  stdin からN*2、32bit整数を読み込む  IN1:2ch 長さN
+  長さ2Nの配列の後半にN個の信号をコピーする。IN2:7ch 長さ2N
+  このときCFだけは(L+R)/2にする
+
+  全chをfftする (OUT1:7ch 長さ2N)
+
+  係数の複素数と掛ける
+
+  結果を逆fftする (OUT2:7ch 長さ2N)
+
+  OUT2の前半を出力バッファ(OUT3:8ch 長さN)にコピー
+ 
+  OUT3をstdout に出力
+
+  IN2の後半を前半にコピー
+　
+  繰り返す
+
