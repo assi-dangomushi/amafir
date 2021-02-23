@@ -4,8 +4,8 @@ input: stdin 32bit int 2ch
 output: stdout 32bit int 8ch  
 
 ## Usage
-amafir2 coefDirectory
-coef-files : LF.txt, RF.txt, LB,txt, RB.txt, LS.txt, RS,txt, CF.txt
+amafir2 coefDirectory  
+coef-files : LF.txt, RF.txt, LB,txt, RB.txt, LS.txt, RS,txt, CF.txt  
 LF,LB,LS:Left channel  
 RF,RB,RS:Right channel  
 CF:(L+R)/2  
