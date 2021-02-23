@@ -1,5 +1,5 @@
 /*
-   Copyright (c) 2015-2019, Amanogawa Audio Labo
+   Copyright (c) 2015-2021, Amanogawa Audio Labo
    All rights reserved.
 
    This program is free software: you can redistribute it and/or modify
@@ -16,7 +16,7 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
    */
 
-// amafir.c  version 0.13
+// amafir2.c  version 0.15
 
 #include <unistd.h>
 #include <stdio.h>
@@ -31,10 +31,10 @@
 const char *filename[] = {"LF.txt" ,"RF.txt", "LS.txt", "RS.txt" ,"LB.txt" ,"RB.txt", "CF.txt"};
 const char wisdomfile[] = "wisdom.data";
 
-//channel mapping:hdmi_play.bin Default
-enum {Lf,Rf,Lfe,Cf,Ls,Rs,Lb,Rb};
-// alsa hdmi
-//enum {Lf,Rf,Lb,Rb,Cf,Lfe,Ls,Rs};
+//channel mapping:hdmi_play.bin
+//enum {Lf,Rf,Lfe,Cf,Ls,Rs,Lb,Rb};
+// alsa hdmi, hdmi_play2.bin
+enum {Lf,Rf,Lb,Rb,Cf,Lfe,Ls,Rs};
 // alsa Xonar U7
 //enum {Lf,Rf,Cf,Lfe,Lb,Rb,Ls,Rs};
 
@@ -83,7 +83,7 @@ void printhelp(void)
 { 
   char s[] = "\n" 
     "This program receive 2ch 32bit from stdin and output 8ch 32bit to stdout\n" 
-    "Usage: amafir coefDirectory\n"
+    "Usage: amafir2 coefDirectory\n"
     "coef-files : LF.txt, RF.txt, LB,txt, RB.txt, LS.txt, RS,txt, CF.txt\n"
     "LF,LB,LS:Left channel,  RF,RB,RS:Right channel, CF:(L+R)/2\n";
   fprintf(stderr, "%s", s); 
